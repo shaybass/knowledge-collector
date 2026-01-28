@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Custom scrollbar for mobile feel */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Disable text selection on UI elements */
+  button, a {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+
+  /* Safe area padding for notched devices */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+@layer components {
+  /* Glass effect card */
+  .glass-card {
+    @apply bg-surface-800/50 backdrop-blur-lg border border-surface-700/50 rounded-2xl;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-l from-primary-400 to-primary-600 bg-clip-text text-transparent;
+  }
+
+  /* Platform badge colors */
+  .badge-youtube { @apply bg-red-500/20 text-red-400; }
+  .badge-twitter { @apply bg-sky-500/20 text-sky-400; }
+  .badge-linkedin { @apply bg-blue-600/20 text-blue-400; }
+  .badge-medium { @apply bg-surface-500/20 text-surface-300; }
+  .badge-substack { @apply bg-orange-500/20 text-orange-400; }
+  .badge-spotify { @apply bg-green-500/20 text-green-400; }
+  .badge-podcast { @apply bg-purple-500/20 text-purple-400; }
+  .badge-news { @apply bg-amber-500/20 text-amber-400; }
+  .badge-blog { @apply bg-indigo-500/20 text-indigo-400; }
+  .badge-other { @apply bg-surface-600/20 text-surface-400; }
+
+  /* Loading spinner */
+  .spinner {
+    @apply w-8 h-8 border-2 border-primary-500/20 border-t-primary-500 rounded-full animate-spin;
+  }
+
+  /* Fade in animation with stagger support */
+  .fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger delays */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
