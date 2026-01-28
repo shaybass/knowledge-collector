@@ -14,7 +14,8 @@ export async function GET(): Promise<NextResponse<{ platforms: string[] }>> {
     }
 
     // Get unique platforms
-    const platforms = [...new Set(items?.map(item => item.platform) || [])].sort();
+    const platformSet = new Set(items?.map(item => item.platform) || []);
+    const platforms = Array.from(platformSet).sort();
 
     return NextResponse.json({ platforms });
   } catch (error) {

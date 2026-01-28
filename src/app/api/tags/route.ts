@@ -14,7 +14,8 @@ export async function GET(): Promise<NextResponse<{ tags: string[] }>> {
 
     // Flatten and dedupe tags
     const allTags = items?.flatMap(item => item.tags || []) || [];
-    const uniqueTags = [...new Set(allTags)].sort();
+    const tagSet = new Set(allTags);
+    const uniqueTags = Array.from(tagSet).sort();
 
     return NextResponse.json({ tags: uniqueTags });
   } catch (error) {
